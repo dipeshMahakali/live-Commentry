@@ -214,22 +214,38 @@ What's your natural commentary? (1-2 short sentences)"""
     def speak_commentary(self, text: str) -> None:
         """Convert text to speech and play it"""
         try:
+            # Ensure directory exists (important for Windows)
+            self.temp_audio_path.parent.mkdir(parents=True, exist_ok=True)
+            
             # Generate speech with gTTS (more natural sounding)
             # Using slow=False for more natural, faster speech
             tts = gTTS(text=text, lang='en', slow=False, tld='com')
-            tts.save(str(self.temp_audio_path))
+            
+            # Save with explicit path handling
+            audio_path_str = str(self.temp_audio_path.resolve())
+            tts.save(audio_path_str)
+            
+            # Verify file was created
+            if not self.temp_audio_path.exists():
+                raise FileNotFoundError(f"Audio file not created at: {audio_path_str}")
             
             # Play audio using pygame
-            pygame.mixer.music.load(str(self.temp_audio_path))
+            pygame.mixer.music.load(audio_path_str)
             pygame.mixer.music.play()
             
             # Wait for audio to finish
             while pygame.mixer.music.get_busy():
                 pygame.time.Clock().tick(10)
             
+        except PermissionError as e:
+            print(f"❌ Permission Error: {e}")
+            print(f"   Cannot write to: {self.temp_audio_path}")
+            print(f"   💡 Try running as administrator or check folder permissions")
         except Exception as e:
             print(f"❌ Error with text-to-speech: {e}")
-            print(f"   Failed to save/play audio at: {self.temp_audio_path}")
+            print(f"   Audio path: {self.temp_audio_path}")
+            print(f"   Directory exists: {self.temp_audio_path.parent.exists()}")
+            print(f"   💡 Check if directory has write permissions")
     
     async def run(self):
         """Main loop: capture, analyze, comment, speak"""
