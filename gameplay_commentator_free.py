@@ -3,6 +3,7 @@
 🎮 AI-Powered Gameplay Commentary System - FREE VERSION
 Uses Ollama + LLaVA (completely free, runs locally forever)
 No API costs, no internet required after setup!
+With NATURAL HUMANOID VOICE using Edge-TTS!
 """
 
 import os
@@ -22,8 +23,15 @@ import json
 import mss
 from PIL import Image
 
-# Text-to-Speech (FREE offline)
-import pyttsx3
+# Text-to-Speech (FREE with natural voice)
+import edge_tts
+
+# Audio playback
+try:
+    import pygame
+    PYGAME_AVAILABLE = True
+except ImportError:
+    PYGAME_AVAILABLE = False
 
 # HTTP client for Ollama
 import requests
