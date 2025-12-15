@@ -11,6 +11,9 @@ import io
 import time
 import random
 import tempfile
+import threading
+import platform
+import subprocess
 from datetime import datetime
 from collections import deque
 from pathlib import Path
@@ -21,7 +24,6 @@ from PIL import Image
 
 # Text-to-Speech
 from gtts import gTTS
-import pygame
 
 # AI Vision and Chat
 from emergentintegrations.llm.chat import LlmChat, UserMessage, ImageContent
