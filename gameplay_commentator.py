@@ -165,23 +165,28 @@ class GameplayCommentator:
     async def generate_commentary(self, screenshot: Image.Image) -> str:
         """Generate humorous commentary based on gameplay screenshot"""
         try:
+            # Check if budget was exceeded before
+            if self.budget_exceeded:
+                print("⚠️ Budget exceeded - using fallback commentary")
+                return self._get_fallback_commentary()
+            
             # Convert image to base64
             img_base64 = self.image_to_base64(screenshot)
             
             # Create context about previous comments to avoid repetition
             recent_context = ""
             if self.recent_comments:
-                recent_context = f"\n\nYour last few comments were: {list(self.recent_comments)}\n🚫 DO NOT repeat similar jokes or style! Switch it up!"
+                recent_context = f"\n\nआपकी पिछली टिप्पणियां थीं: {list(self.recent_comments)}\n🚫 इसी तरह के jokes या style को दोहराएं नहीं! कुछ नया करें!"
             
-            # Build prompt with context
-            prompt = f"""You're LIVE commentating this gameplay moment! Look at this screenshot and give me your natural, spontaneous reaction.
+            # Build prompt with context (in Hindi)
+            prompt = f"""आप इस गेमप्ले moment को LIVE commentate कर रहे हैं! इस screenshot को देखें और अपनी प्राकृतिक, spontaneous reaction दें।
 
 🎮 Comment #{self.comment_count + 1}
-🔥 Be authentic - like you're streaming to thousands of viewers right now
-💭 React like a REAL human streamer would
-🎯 Make it different from your previous style!{recent_context}
+🔥 Authentic बनें - जैसे आप हजारों viewers को stream कर रहे हैं
+💭 एक असली human streamer की तरह react करें
+🎯 अपनी पिछली style से अलग बनाएं!{recent_context}
 
-What's your natural commentary? (1-2 short sentences)"""
+आपकी प्राकृतिक commentary क्या है? (1-2 छोटे वाक्य)"""
             
             # Create message with image
             user_message = UserMessage(
@@ -202,16 +207,32 @@ What's your natural commentary? (1-2 short sentences)"""
             return commentary
             
         except Exception as e:
-            print(f"❌ Error generating commentary: {e}")
-            # Fallback commentary - natural style
-            fallbacks = [
-                "Alright, so that's happening on the screen right now.",
-                "Okay okay, I see what's going on here... I think.",
-                "Wait, hold up... yeah no I got nothing for this one.",
-                "You know what, let's just see where this goes.",
-                "Man, the gameplay is really... it's definitely gameplay."
-            ]
-            return random.choice(fallbacks)
+            error_msg = str(e).lower()
+            
+            # Check if it's a budget error
+            if "budget" in error_msg or "exceeded" in error_msg:
+                print(f"❌ Budget Exceeded: {e}")
+                print("💡 Your Emergent LLM Key budget is exhausted.")
+                print("   Using free fallback commentary mode...")
+                self.budget_exceeded = True
+                return self._get_fallback_commentary()
+            else:
+                print(f"❌ Error generating commentary: {e}")
+                return self._get_fallback_commentary()
+    
+    def _get_fallback_commentary(self) -> str:
+        """Get fallback Hindi commentary when AI is unavailable"""
+        fallbacks = [
+            "अच्छा, तो ये स्क्रीन पर हो रहा है अभी।",
+            "ठीक ठीक, समझ आ रहा है क्या हो रहा है... शायद।",
+            "रुको, ये क्या... नहीं कुछ नहीं कहूंगा इस बारे में।",
+            "तुम्हें पता है क्या, देखते हैं क्या होता है।",
+            "यार, gameplay तो चल रहा है... definitely gameplay है।",
+            "वाह भाई, interesting move है ये।",
+            "चलो अच्छा है, कुछ तो progress हो रहा है।",
+            "देखते हैं आगे क्या होता है।"
+        ]
+        return random.choice(fallbacks)
     
     def speak_commentary(self, text: str) -> None:
         """Convert text to speech and play it"""
