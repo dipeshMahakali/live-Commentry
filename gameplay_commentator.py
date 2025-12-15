@@ -234,41 +234,81 @@ class GameplayCommentator:
         ]
         return random.choice(fallbacks)
     
-    def speak_commentary(self, text: str) -> None:
-        """Convert text to speech and play it"""
+    def _play_audio_file(self, audio_path: Path) -> None:
+        """Play audio file using OS-specific commands in a separate thread"""
         try:
-            # Ensure directory exists (important for Windows)
-            self.temp_audio_path.parent.mkdir(parents=True, exist_ok=True)
+            if self.os_type == "Windows":
+                # Windows: use start command with wmplayer or default audio player
+                os.system(f'start /min "" "{audio_path}"')
+            elif self.os_type == "Darwin":  # macOS
+                subprocess.run(['afplay', str(audio_path)], check=True)
+            else:  # Linux
+                # Try common Linux audio players
+                for player in ['mpg123', 'ffplay', 'cvlc', 'aplay']:
+                    try:
+                        subprocess.run([player, str(audio_path)], 
+                                     check=True, 
+                                     stdout=subprocess.DEVNULL, 
+                                     stderr=subprocess.DEVNULL)
+                        break
+                    except (subprocess.CalledProcessError, FileNotFoundError):
+                        continue
             
-            # Generate speech with gTTS (more natural sounding)
-            # Using slow=False for more natural, faster speech
-            tts = gTTS(text=text, lang='en', slow=False, tld='com')
+            # Wait a bit then cleanup
+            time.sleep(3)  # Give time for audio to start playing
             
-            # Save with explicit path handling
-            audio_path_str = str(self.temp_audio_path.resolve())
+            # Try to delete the file after playback
+            try:
+                if audio_path.exists():
+                    audio_path.unlink()
+            except Exception:
+                pass  # Ignore cleanup errors
+                
+        except Exception as e:
+            print(f"⚠️ Audio playback error: {e}")
+    
+    def speak_commentary(self, text: str) -> None:
+        """Convert text to speech and play it using threading"""
+        try:
+            # Ensure directory exists
+            self.tmp_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Create unique filename to avoid conflicts
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
+            audio_path = self.tmp_dir / f"commentary_{timestamp}.mp3"
+            
+            # Generate speech with gTTS in Hindi
+            # Using slow=False for natural, faster speech
+            tts = gTTS(text=text, lang='hi', slow=False)
+            
+            # Save audio file
+            audio_path_str = str(audio_path.resolve())
             tts.save(audio_path_str)
             
             # Verify file was created
-            if not self.temp_audio_path.exists():
+            if not audio_path.exists():
                 raise FileNotFoundError(f"Audio file not created at: {audio_path_str}")
             
-            # Play audio using pygame
-            pygame.mixer.music.load(audio_path_str)
-            pygame.mixer.music.play()
+            print(f"✅ Audio saved: {audio_path.name}")
             
-            # Wait for audio to finish
-            while pygame.mixer.music.get_busy():
-                pygame.time.Clock().tick(10)
+            # Play audio in a separate thread to avoid blocking and file locking
+            playback_thread = threading.Thread(
+                target=self._play_audio_file, 
+                args=(audio_path,),
+                daemon=True
+            )
+            playback_thread.start()
+            
+            # Wait for audio to start playing
+            time.sleep(1)
             
         except PermissionError as e:
             print(f"❌ Permission Error: {e}")
-            print(f"   Cannot write to: {self.temp_audio_path}")
             print(f"   💡 Try running as administrator or check folder permissions")
         except Exception as e:
             print(f"❌ Error with text-to-speech: {e}")
-            print(f"   Audio path: {self.temp_audio_path}")
-            print(f"   Directory exists: {self.temp_audio_path.parent.exists()}")
-            print(f"   💡 Check if directory has write permissions")
+            print(f"   Audio directory: {self.tmp_dir}")
+            print(f"   Directory exists: {self.tmp_dir.exists()}")
     
     async def run(self):
         """Main loop: capture, analyze, comment, speak"""
