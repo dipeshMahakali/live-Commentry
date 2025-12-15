@@ -138,18 +138,25 @@ class GameplayCommentatorFree:
 केवल commentary दें - छोटा, मज़ेदार, और हर बार TOTALLY DIFFERENT!"""
     
     def capture_screen(self) -> Image.Image:
-        """Capture full screen screenshot"""
+        """Capture full screen screenshot with optimized quality"""
         with mss.mss() as sct:
             monitor = sct.monitors[1]
             screenshot = sct.grab(monitor)
             img = Image.frombytes('RGB', screenshot.size, screenshot.bgra, 'raw', 'BGRX')
             
-            # Resize to optimize (max 1280px width)
-            max_width = 1280
+            # Resize to optimize (increased to 1024px for better accuracy)
+            # Smaller than before for speed, but with better quality preservation
+            max_width = 1024
             if img.width > max_width:
                 ratio = max_width / img.width
                 new_size = (max_width, int(img.height * ratio))
+                # Use LANCZOS for high-quality downscaling
                 img = img.resize(new_size, Image.Resampling.LANCZOS)
+            
+            # Enhance image slightly for better AI analysis
+            from PIL import ImageEnhance
+            enhancer = ImageEnhance.Sharpness(img)
+            img = enhancer.enhance(1.2)  # Slight sharpening
             
             return img
     
