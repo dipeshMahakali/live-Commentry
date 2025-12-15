@@ -307,14 +307,19 @@ class GameplayCommentatorFree:
         return random.choice(fallbacks)
     
     async def speak_commentary(self, text: str) -> None:
-        """Convert text to speech using FREE Edge-TTS with natural voice"""
+        """Convert text to speech using FREE Edge-TTS with natural voice - Optimized for speed"""
         try:
             # Create unique audio file path
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
             audio_file = self.tmp_dir / f"commentary_{timestamp}.mp3"
             
             # Generate speech with Edge-TTS (very natural, human-like)
-            communicate = edge_tts.Communicate(text, self.current_voice)
+            # Added rate adjustment for faster speech
+            communicate = edge_tts.Communicate(
+                text, 
+                self.current_voice,
+                rate="+15%"  # Slightly faster for more energetic commentary
+            )
             await communicate.save(str(audio_file))
             
             # Verify file was created
@@ -323,19 +328,24 @@ class GameplayCommentatorFree:
             
             print(f"✅ Audio generated: {audio_file.name}")
             
-            # Play audio
+            # Play audio (non-blocking for faster loop)
             await self._play_audio(audio_file)
             
-            # Cleanup after playback
-            try:
-                if audio_file.exists():
-                    audio_file.unlink()
-            except Exception:
-                pass  # Ignore cleanup errors
+            # Cleanup after playback (async to not block)
+            asyncio.create_task(self._cleanup_audio(audio_file))
                 
         except Exception as e:
             print(f"❌ Error with text-to-speech: {e}")
             print(f"🔊 [VOICE]: {text}")
+    
+    async def _cleanup_audio(self, audio_file: Path) -> None:
+        """Async cleanup of audio file"""
+        try:
+            await asyncio.sleep(1)  # Wait a bit before cleanup
+            if audio_file.exists():
+                audio_file.unlink()
+        except Exception:
+            pass  # Ignore cleanup errors
     
     async def _play_audio(self, audio_file: Path) -> None:
         """Play audio file using pygame or system player"""
