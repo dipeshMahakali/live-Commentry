@@ -326,7 +326,7 @@ class GameplayCommentatorFree:
                 
                 # Step 3: Speak commentary
                 print("🎙️ Speaking commentary...")
-                self.speak_commentary(commentary)
+                await self.speak_commentary(commentary)
                 print("✅ Commentary delivered!")
                 
                 # Calculate time and sleep
