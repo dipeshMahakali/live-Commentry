@@ -3,6 +3,7 @@
 🎮 AI-Powered Gameplay Commentary System - FREE VERSION
 Uses Ollama + LLaVA (completely free, runs locally forever)
 No API costs, no internet required after setup!
+With NATURAL HUMANOID VOICE using Edge-TTS!
 """
 
 import os
@@ -22,8 +23,15 @@ import json
 import mss
 from PIL import Image
 
-# Text-to-Speech (FREE offline)
-import pyttsx3
+# Text-to-Speech (FREE with natural voice)
+import edge_tts
+
+# Audio playback
+try:
+    import pygame
+    PYGAME_AVAILABLE = True
+except ImportError:
+    PYGAME_AVAILABLE = False
 
 # HTTP client for Ollama
 import requests
@@ -32,36 +40,26 @@ class GameplayCommentatorFree:
     """AI-powered gameplay commentator using FREE local models"""
     
     def __init__(self):
-        """Initialize the commentator with Ollama and local TTS"""
+        """Initialize the commentator with Ollama and natural TTS"""
         # Ollama configuration
         self.ollama_url = "http://localhost:11434/api/generate"
         self.model_name = "llava:latest"  # Free vision model
         
-        # Initialize Text-to-Speech engine (offline, free)
-        try:
-            self.tts_engine = pyttsx3.init()
-            # Configure voice settings for natural speech
-            voices = self.tts_engine.getProperty('voices')
-            
-            # Try to find a Hindi voice, fallback to English
-            hindi_voice = None
-            for voice in voices:
-                if 'hindi' in voice.name.lower() or 'hi' in voice.languages:
-                    hindi_voice = voice.id
-                    break
-            
-            if hindi_voice:
-                self.tts_engine.setProperty('voice', hindi_voice)
-            
-            # Set natural speech rate (150-200 is natural)
-            self.tts_engine.setProperty('rate', 165)
-            # Set volume (0.0 to 1.0)
-            self.tts_engine.setProperty('volume', 0.9)
-            
-            print("✅ TTS Engine initialized (Free offline voice)")
-        except Exception as e:
-            print(f"⚠️ TTS initialization warning: {e}")
-            self.tts_engine = None
+        # Edge-TTS Voice Configuration (FREE, Natural, Human-like)
+        # Hindi voices available in Edge-TTS
+        self.voice_options = [
+            "hi-IN-SwaraNeural",      # Female, very natural
+            "hi-IN-MadhurNeural",     # Male, clear and natural
+        ]
+        self.current_voice = self.voice_options[0]  # Default to female voice
+        
+        # Initialize pygame for audio playback
+        if PYGAME_AVAILABLE:
+            try:
+                pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=512)
+                print("✅ Pygame audio initialized")
+            except Exception as e:
+                print(f"⚠️ Pygame initialization warning: {e}")
         
         # Memory to avoid repetitive comments
         self.recent_comments = deque(maxlen=5)
@@ -70,8 +68,10 @@ class GameplayCommentatorFree:
         self.screenshot_interval = 8
         self.comment_count = 0
         
-        # Get app directory
+        # Get app directory and create tmp folder
         self.app_dir = Path(__file__).parent
+        self.tmp_dir = self.app_dir / "tmp"
+        self.tmp_dir.mkdir(parents=True, exist_ok=True)
         
         # Detect OS
         self.os_type = platform.system()
@@ -79,8 +79,9 @@ class GameplayCommentatorFree:
         print("🎮 AI Gameplay Commentator Initialized (FREE VERSION)!")
         print("🤖 Using Ollama + LLaVA (Free, Local, No API costs)")
         print(f"📸 Screenshot interval: {self.screenshot_interval}s")
-        print(f"🔊 Voice: Offline TTS ({self.os_type})")
-        print("🎙️ Ready to generate humorous Hindi commentary!\n")
+        print(f"🎙️ Voice: Edge-TTS ({self.current_voice})")
+        print("✨ Natural humanoid voice with emotion!")
+        print("🎯 Ready to generate humorous Hindi commentary!\n")
     
     def _check_ollama_status(self) -> bool:
         """Check if Ollama is running and model is available"""
@@ -223,19 +224,69 @@ class GameplayCommentatorFree:
         ]
         return random.choice(fallbacks)
     
-    def speak_commentary(self, text: str) -> None:
-        """Convert text to speech using FREE offline TTS"""
+    async def speak_commentary(self, text: str) -> None:
+        """Convert text to speech using FREE Edge-TTS with natural voice"""
         try:
-            if self.tts_engine:
-                # Use pyttsx3 for offline, natural voice
-                self.tts_engine.say(text)
-                self.tts_engine.runAndWait()
-            else:
-                # Fallback: just print if TTS not available
-                print(f"🔊 [VOICE]: {text}")
+            # Create unique audio file path
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
+            audio_file = self.tmp_dir / f"commentary_{timestamp}.mp3"
+            
+            # Generate speech with Edge-TTS (very natural, human-like)
+            communicate = edge_tts.Communicate(text, self.current_voice)
+            await communicate.save(str(audio_file))
+            
+            # Verify file was created
+            if not audio_file.exists():
+                raise FileNotFoundError(f"Audio file not created: {audio_file}")
+            
+            print(f"✅ Audio generated: {audio_file.name}")
+            
+            # Play audio
+            await self._play_audio(audio_file)
+            
+            # Cleanup after playback
+            try:
+                if audio_file.exists():
+                    audio_file.unlink()
+            except Exception:
+                pass  # Ignore cleanup errors
+                
         except Exception as e:
             print(f"❌ Error with text-to-speech: {e}")
             print(f"🔊 [VOICE]: {text}")
+    
+    async def _play_audio(self, audio_file: Path) -> None:
+        """Play audio file using pygame or system player"""
+        try:
+            if PYGAME_AVAILABLE:
+                # Use pygame for reliable playback
+                pygame.mixer.music.load(str(audio_file))
+                pygame.mixer.music.play()
+                
+                # Wait for playback to complete
+                while pygame.mixer.music.get_busy():
+                    await asyncio.sleep(0.1)
+                    
+            else:
+                # Fallback to system audio player
+                if self.os_type == "Windows":
+                    os.system(f'start /min "" "{audio_file}"')
+                elif self.os_type == "Darwin":  # macOS
+                    os.system(f'afplay "{audio_file}"')
+                else:  # Linux
+                    # Try common Linux players
+                    for player in ['mpg123', 'ffplay', 'cvlc']:
+                        if subprocess.run(['which', player], capture_output=True).returncode == 0:
+                            subprocess.run([player, '-q', str(audio_file)], 
+                                         stdout=subprocess.DEVNULL, 
+                                         stderr=subprocess.DEVNULL)
+                            break
+                
+                # Wait estimated time for playback
+                await asyncio.sleep(3)
+                
+        except Exception as e:
+            print(f"⚠️ Audio playback warning: {e}")
     
     async def run(self):
         """Main loop: capture, analyze, comment, speak"""
@@ -275,7 +326,7 @@ class GameplayCommentatorFree:
                 
                 # Step 3: Speak commentary
                 print("🎙️ Speaking commentary...")
-                self.speak_commentary(commentary)
+                await self.speak_commentary(commentary)
                 print("✅ Commentary delivered!")
                 
                 # Calculate time and sleep
