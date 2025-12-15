@@ -355,18 +355,19 @@ class GameplayCommentator:
             if not audio_path.exists():
                 raise FileNotFoundError(f"Audio file not created at: {audio_path_str}")
             
-            print(f"✅ Audio saved: {audio_path.name}")
+            print(f"✅ Audio saved: {audio_path.name} ({audio_path.stat().st_size} bytes)")
             
-            # Play audio in a separate thread to avoid blocking and file locking
+            # Play audio in a separate thread
+            # The thread will handle playback AND cleanup after completion
             playback_thread = threading.Thread(
                 target=self._play_audio_file, 
                 args=(audio_path,),
-                daemon=True
+                daemon=False  # Non-daemon so it completes before exit
             )
             playback_thread.start()
             
-            # Wait for audio to start playing
-            time.sleep(1)
+            # Don't wait here - let the thread handle everything
+            # This prevents blocking and allows proper cleanup after playback
             
         except PermissionError as e:
             print(f"❌ Permission Error: {e}")
