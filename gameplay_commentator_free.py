@@ -154,9 +154,8 @@ class GameplayCommentatorFree:
                 img = img.resize(new_size, Image.Resampling.LANCZOS)
             
             # Enhance image slightly for better AI analysis
-            from PIL import ImageEnhance
             enhancer = ImageEnhance.Sharpness(img)
-            img = enhancer.enhance(1.2)  # Slight sharpening
+            img = enhancer.enhance(1.2)  # Slight sharpening for better detail
             
             return img
     
