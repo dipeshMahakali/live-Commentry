@@ -161,9 +161,10 @@ class GameplayCommentatorFree:
             return img
     
     def image_to_base64(self, img: Image.Image) -> str:
-        """Convert PIL Image to base64 string"""
+        """Convert PIL Image to base64 string with high quality"""
         buffered = io.BytesIO()
-        img.save(buffered, format="JPEG", quality=85)
+        # Increased quality to 95 for better detail preservation
+        img.save(buffered, format="JPEG", quality=95, optimize=True)
         img_bytes = buffered.getvalue()
         return base64.b64encode(img_bytes).decode('utf-8')
     
