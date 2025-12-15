@@ -224,19 +224,69 @@ class GameplayCommentatorFree:
         ]
         return random.choice(fallbacks)
     
-    def speak_commentary(self, text: str) -> None:
-        """Convert text to speech using FREE offline TTS"""
+    async def speak_commentary(self, text: str) -> None:
+        """Convert text to speech using FREE Edge-TTS with natural voice"""
         try:
-            if self.tts_engine:
-                # Use pyttsx3 for offline, natural voice
-                self.tts_engine.say(text)
-                self.tts_engine.runAndWait()
-            else:
-                # Fallback: just print if TTS not available
-                print(f"🔊 [VOICE]: {text}")
+            # Create unique audio file path
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
+            audio_file = self.tmp_dir / f"commentary_{timestamp}.mp3"
+            
+            # Generate speech with Edge-TTS (very natural, human-like)
+            communicate = edge_tts.Communicate(text, self.current_voice)
+            await communicate.save(str(audio_file))
+            
+            # Verify file was created
+            if not audio_file.exists():
+                raise FileNotFoundError(f"Audio file not created: {audio_file}")
+            
+            print(f"✅ Audio generated: {audio_file.name}")
+            
+            # Play audio
+            await self._play_audio(audio_file)
+            
+            # Cleanup after playback
+            try:
+                if audio_file.exists():
+                    audio_file.unlink()
+            except Exception:
+                pass  # Ignore cleanup errors
+                
         except Exception as e:
             print(f"❌ Error with text-to-speech: {e}")
             print(f"🔊 [VOICE]: {text}")
+    
+    async def _play_audio(self, audio_file: Path) -> None:
+        """Play audio file using pygame or system player"""
+        try:
+            if PYGAME_AVAILABLE:
+                # Use pygame for reliable playback
+                pygame.mixer.music.load(str(audio_file))
+                pygame.mixer.music.play()
+                
+                # Wait for playback to complete
+                while pygame.mixer.music.get_busy():
+                    await asyncio.sleep(0.1)
+                    
+            else:
+                # Fallback to system audio player
+                if self.os_type == "Windows":
+                    os.system(f'start /min "" "{audio_file}"')
+                elif self.os_type == "Darwin":  # macOS
+                    os.system(f'afplay "{audio_file}"')
+                else:  # Linux
+                    # Try common Linux players
+                    for player in ['mpg123', 'ffplay', 'cvlc']:
+                        if subprocess.run(['which', player], capture_output=True).returncode == 0:
+                            subprocess.run([player, '-q', str(audio_file)], 
+                                         stdout=subprocess.DEVNULL, 
+                                         stderr=subprocess.DEVNULL)
+                            break
+                
+                # Wait estimated time for playback
+                await asyncio.sleep(3)
+                
+        except Exception as e:
+            print(f"⚠️ Audio playback warning: {e}")
     
     async def run(self):
         """Main loop: capture, analyze, comment, speak"""
