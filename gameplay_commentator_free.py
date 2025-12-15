@@ -285,28 +285,39 @@ class GameplayCommentatorFree:
         return False
     
     def _get_fallback_commentary(self) -> str:
-        """Get fallback Hindi commentary when AI is unavailable - Enhanced with more variety"""
+        """Get fallback Hindi commentary with LIVE streaming feel"""
+        # LIVE streaming style fallbacks - natural, spontaneous
         fallbacks = [
-            "अरे वाह! ये तो देखना बनता है!",
-            "यार, scene तो धांसू है!",
-            "ओहो! क्या चल रहा है ये?",
-            "भाई भाई, ये तो मस्त है!",
-            "देखो देखो, कुछ होने वाला है!",
-            "यो! Game तो fire हो रहा है!",
-            "अजी, इससे अच्छा और क्या?",
-            "पगला गया है क्या! कमाल है!",
-            "होली मोली! क्या scene है!",
-            "वाह क्या बात है भाई!",
-            "अबे ये तो unexpected था!",
-            "GG! धमाका हो गया!",
-            "प्रो मूव्स चल रहे हैं!",
-            "यार क्या gameplay है!",
-            "छक्का मारा इसने!",
-            "भाई साहब, लाजवाब है!",
-            "अरे बाप रे! OP moment!",
-            "क्या सीन है यार!",
-            "धांसू content मिल रहा है!",
-            "मज़ा आ गया बोस!"
+            "अरे... ये देखो यार!",
+            "रुको रुको... वाह!",
+            "ओह! ये तो... nice!",
+            "हम्म... interesting scene है!",
+            "देखो guys... ये क्या है!",
+            "अभी... अभी कुछ होगा!",
+            "यो! check करो ये!",
+            "भाई... seriously?",
+            "अच्छा तो... ओह wow!",
+            "एक sec... damn!",
+            "यार trust me... epic है!",
+            "so... let's see... nice!",
+            "अरे नहीं... wait... हां!",
+            "ओहो... unexpected था!",
+            "guys... देखो ये!",
+            "तो अब... hmm... cool!",
+            "अबे... क्या scene!",
+            "रुको... ये तो... pro!",
+            "oh man... intense है!",
+            "चलो देखते... wow!",
+            "एक min... amazing!",
+            "यार... no way!",
+            "देखो... होने वाला कुछ!",
+            "so excited guys!",
+            "अरे... tension हो रही!",
+            "हम्म... scary लग रहा!",
+            "go go go... yes!",
+            "careful... ओह!",
+            "nice nice... good!",
+            "यार... feeling good!"
         ]
         # Use recent comments to avoid picking same fallback
         used_recently = list(self.recent_comments)[-3:]
