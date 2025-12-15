@@ -186,25 +186,28 @@ class GameplayCommentatorFree:
                 recent_list = list(self.recent_comments)[-5:]  # Last 5 only
                 recent_context = f"\n\n⚠️ आपकी पिछली 5 टिप्पणियां:\n{chr(10).join([f'- {c}' for c in recent_list])}\n\n🚫 FORBIDDEN: इन शब्दों/phrases को दोबारा use न करें!\n✅ REQUIRED: पूरी तरह DIFFERENT style और words use करें!"
             
-            # Add variety hints based on comment count
-            variety_hints = [
-                "Screen पर SPECIFIC details देखें और उन पर बोलें!",
-                "इस बार TOTALLY अलग angle से comment करें!",
-                "UNEXPECTED reaction दें - surprise करें!",
-                "Screen के colors/text/characters पर FOCUS करें!",
-                "HUMOROUS observation करें जो किसी ने न सोचा हो!"
+            # Add LIVE streaming hints that change dynamically
+            live_hints = [
+                "पहली नज़र में जो दिखे उस पर turant react करें - unfiltered!",
+                "सोचते हुए बोलें जैसे live में होता है - thinking out loud!",
+                "Screen पर कुछ बदला? उस change पर immediately react करें!",
+                "जो feel हो रहा वो express करें - excited, confused, scared!",
+                "Dost से बात की तरह - casual, natural, incomplete sentences OK!",
+                "Stream of consciousness - जो mind में आए वो बोलें!",
+                "Live moment capture करें - अधूरा वाक्य भी chalega!",
+                "Viewers को बताओ जैसे खुद खेल रहे हो!"
             ]
-            current_hint = variety_hints[self.comment_count % len(variety_hints)]
+            current_hint = live_hints[self.comment_count % len(live_hints)]
             
-            # Build enhanced prompt with better instructions
-            prompt = f"""🎮 LIVE गेमप्ले का screenshot देखें और इस पर एक मज़ेदार, unique commentary दें!
+            # Build LIVE streaming style prompt
+            prompt = f"""🔴 LIVE STREAMING! आप अभी real-time में ये gameplay देख रहे हैं!
 
-📸 Comment #{self.comment_count + 1}
-🎯 {current_hint}
-💡 Screen में क्या SPECIFIC चीज़ें दिख रही हैं? उन पर बोलें!
-🎭 Fresh reaction - हर बार नया अंदाज़!{recent_context}
+🎮 Moment #{self.comment_count + 1}
+💭 {current_hint}
+👀 स्क्रीन पर EXACTLY क्या हो रहा है? जैसे live reaction हो!
+🎙️ Unscripted, spontaneous - जो दिमाग में आया वो बोलो!{recent_context}
 
-📝 आपकी मज़ेदार commentary (केवल 1 छोटा वाक्य, max 12 words):"""
+📢 आपका LIVE reaction (natural, can be incomplete, max 10 words):"""
             
             # Call Ollama API with optimized parameters
             payload = {
