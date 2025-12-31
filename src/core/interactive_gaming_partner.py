@@ -68,7 +68,7 @@ class InteractiveGamingPartner:
         self.vision_model = "llava-phi3"
         
         # Cloud Mind Config (The Genius Brain - Zero CPU Load)
-        self.cloud_api_key = "YOUR_FREE_GROQ_OR_HF_KEY" 
+        self.cloud_api_key = "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" 
         self.cloud_base_url = "https://api.groq.com/openai/v1" # Or any OpenAI-compatible provider
         self.thinking_model = "llama-3.3-70b-versatile" # 70B Model for FREE!
         
