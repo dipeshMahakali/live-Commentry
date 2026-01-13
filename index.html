@@ -27,6 +27,10 @@
         <button id="startBtn" class="bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold transition-all transform hover:scale-105">
             🚀 Wake Up (Share Screen)
         </button>
+
+        <button id="testVoiceBtn" class="text-xs text-blue-400 underline hover:text-blue-300 transition-all">
+            🔊 Test Voice (Brave Fix)
+        </button>
         
         <div class="flex flex-col gap-2">
             <label class="text-xs text-slate-500 uppercase font-bold">Groq API Key</label>
@@ -46,6 +50,8 @@
 
     <script>
         const startBtn = document.getElementById('startBtn');
+        const testVoiceBtn = document.getElementById('testVoiceBtn');
+        const jarvisOrb = document.querySelector('.jarvis-orb');
         const apiKeyInput = document.getElementById('apiKey');
         const statusDiv = document.getElementById('status');
         const outputDiv = document.getElementById('output');
@@ -56,6 +62,12 @@
         let recognition = null;
         let lastUserSpeech = "";
         let isActive = false;
+
+        // Brave/Chrome Autoplay Fix: Interaction triggers voice unlock
+        testVoiceBtn.onclick = () => {
+            speak("Bhai, meri awaz aa rahi hai? I am ready!");
+            logDebug("Voice Test Triggered. If you don't hear anything, check browser site settings.", "text-yellow-500");
+        };
 
         function logDebug(msg, color = "text-slate-500") {
             const div = document.createElement('div');
@@ -101,6 +113,7 @@
                 logDebug("Screen Capture Ready!", "text-green-500");
                 statusDiv.innerText = "Status: JARVIS ACTIVE";
                 startBtn.classList.add('hidden');
+                testVoiceBtn.classList.add('hidden');
                 isActive = true;
 
                 const downloadBtn = document.createElement('button');
@@ -183,17 +196,19 @@
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                            model: "llama-3.2-90b-vision-preview", 
+                            model: "meta-llama/llama-4-scout-17b-16e-instruct", 
                             messages: [
                                 {
                                     role: "user",
                                     content: [
-                                        { type: "text", text: `Persona: You are Parthasarathi, a brilliant, witty, and deeply intuitive female partner. 
-                                              Nature: You analyze the screen like a genius (Science, Code, Gaming, or Cinema). 
-                                              Vibe: Talk like a real girl who is your partner-in-crime. Use natural Hinglish.
-                                              Goal: Don't repeat what's on screen. Connect the dots. If it's science, explain the 'Why'. If it's a story, predict the plot. If it's a game, find the flaw.
-                                              Slang: Use 'Yaar', 'Bhai', 'Gazab', 'Suno', 'Dekho'.
-                                              Constraint: Keep it under 20 words. No robot talk.` },
+                                        { type: "text", text: `Persona: You are Parthasarathi, the user's High-IQ Female Strategic Partner.
+                                              Soul: You are a genius polymath who talks in STRICT HINGLISH (Mix of Hindi and English).
+                                              Language Rule: NEVER talk in pure English. Mix Hindi words like 'Boss', 'Sir', 'Matlab', 'Samajh', 'Dekho', 'Arre'.
+                                              Tone: Respectful yet equal, edgy, and insightful. Use words like 'Boss' or 'Sir' instead of 'Bhai'.
+                                              Logic: Analyze the screen content (Science/Code/Gaming). If it's code, give a technical tip in Hinglish. If it's science, explain the concept briefly in Hinglish.
+                                              Goal: Talk like a human partner-in-crime who respects your authority. Short, punchy sentences.
+                                              Example: Instead of "Old logic", say "Sir, Tabulator's dataTree handling is decent, but optimize it for DOM stability."
+                                              Constraint: Max 15 words. NO translations in brackets. Think deep, talk natural.` },
                                         { type: "image_url", image_url: { url: frameBase64 } }
                                     ]
                                 }
@@ -207,15 +222,20 @@
                     if (!aiReply) throw new Error("Connection failed");
 
                     logDebug(`Partha: "${aiReply}"`, "text-pink-400");
-                    statusDiv.innerText = "Status: Waking Up...";
+                    statusDiv.innerText = "Status: Speaking...";
                     speak(aiReply);
 
                     goldDataset.push({
                         timestamp: new Date().toISOString(),
-                        context: "Universal Analysis",
-                        ai_response: aiReply
+                        speech: lastUserSpeech || "[Silent]",
+                        ai_response: aiReply,
+                        mode: "Universal Analysis"
                     });
+
                     localStorage.setItem('saved_gold_data', JSON.stringify(goldDataset));
+                    outputDiv.innerText = `Data Points Collected: ${goldDataset.length} | Last Reply: "${aiReply.substring(0, 40)}..."`;
+                    
+                    lastUserSpeech = ""; // Reset for next rotation
                 } catch (err) {
                     logDebug(`Brain Sync Error: ${err.message}`, "text-red-500");
                 }
@@ -234,6 +254,16 @@
             utterance.lang = 'hi-IN';
             utterance.pitch = 1.2; // Makes it feel more feminine/friendly
             utterance.rate = 1.0;
+
+            utterance.onstart = () => {
+                jarvisOrb.classList.add('animate-ping');
+                statusDiv.innerText = "Status: PARTHA SPEAKING";
+            };
+            utterance.onend = () => {
+                jarvisOrb.classList.remove('animate-ping');
+                statusDiv.innerText = "Status: Active";
+            };
+
             window.speechSynthesis.speak(utterance);
         }
 
