@@ -14792,5 +14792,941 @@
                 }
             ]
         }
+    },
+    {
+        "id": "20260202_235903",
+        "timestamp": "2026-02-02T23:59:03.291604",
+        "state": {
+            "visual": "frame_20260202_235903.jpg",
+            "audio_transcript": "हेलो"
+        },
+        "action": {
+            "response": "नमस्ते! ऐसा लगता है कि आप ओपनक्लॉ प्रोजेक्ट के एजेंट्स एमडी फाइल को देख रहे हैं। क्या आपको किसी खास चीज़ में मदद चाहिए?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260202_235903.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nहेलो"
+                },
+                {
+                    "from": "gpt",
+                    "value": "नमस्ते! ऐसा लगता है कि आप ओपनक्लॉ प्रोजेक्ट के एजेंट्स एमडी फाइल को देख रहे हैं। क्या आपको किसी खास चीज़ में मदद चाहिए?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260202_235909",
+        "timestamp": "2026-02-02T23:59:09.444246",
+        "state": {
+            "visual": "frame_20260202_235909.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260202_235909.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260202_235928",
+        "timestamp": "2026-02-02T23:59:28.279479",
+        "state": {
+            "visual": "frame_20260202_235928.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260202_235928.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260202_235929",
+        "timestamp": "2026-02-02T23:59:29.888443",
+        "state": {
+            "visual": "frame_20260202_235929.jpg",
+            "audio_transcript": "क्या तुम्हें इस रिपोजिटरी में कुछ समझ में आ रहा है"
+        },
+        "action": {
+            "response": "अरे वाह! ऐसा लगता है कि आप ओपनक्लॉ के एजेंट्स के डॉक्स और कमांड्स को देख रहे हैं। क्या आपको किसी खास चीज़ में मदद चाहिए या आप बस एक्सप्लोर कर रहे हैं?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260202_235929.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nक्या तुम्हें इस रिपोजिटरी में कुछ समझ में आ रहा है"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे वाह! ऐसा लगता है कि आप ओपनक्लॉ के एजेंट्स के डॉक्स और कमांड्स को देख रहे हैं। क्या आपको किसी खास चीज़ में मदद चाहिए या आप बस एक्सप्लोर कर रहे हैं?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260202_235948",
+        "timestamp": "2026-02-02T23:59:48.402025",
+        "state": {
+            "visual": "frame_20260202_235948.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260202_235948.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260202_235950",
+        "timestamp": "2026-02-02T23:59:50.810244",
+        "state": {
+            "visual": "frame_20260202_235950.jpg",
+            "audio_transcript": "मैं इसे कैसे उसे कर"
+        },
+        "action": {
+            "response": "बॉस, लगता है आप ओपनक्लॉ के एजेंट्स डॉक्स पढ़ रहे हैं! पहले पेज देखकर तो ऐसा लगता है कि यहाँ प्रोजेक्ट स्ट्रक्चर और डॉक्स लिंकिंग के बारे में जानकारी है - क्या आपको किसी खास चीज़ में मदद चाहिए?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260202_235950.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nमैं इसे कैसे उसे कर"
+                },
+                {
+                    "from": "gpt",
+                    "value": "बॉस, लगता है आप ओपनक्लॉ के एजेंट्स डॉक्स पढ़ रहे हैं! पहले पेज देखकर तो ऐसा लगता है कि यहाँ प्रोजेक्ट स्ट्रक्चर और डॉक्स लिंकिंग के बारे में जानकारी है - क्या आपको किसी खास चीज़ में मदद चाहिए?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_000008",
+        "timestamp": "2026-02-03T00:00:08.565291",
+        "state": {
+            "visual": "frame_20260203_000008.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_000008.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_000013",
+        "timestamp": "2026-02-03T00:00:13.438093",
+        "state": {
+            "visual": "frame_20260203_000013.jpg",
+            "audio_transcript": "मुझे इसे डाउनलोड"
+        },
+        "action": {
+            "response": "अरे, डाउनलोड करना है तो पहले रेपो की जानकारी लेनी पड़ेगी! ओपनक्लॉ का रेपो ये रहा -  Repo: https://github.com/openclow/openclaw",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_000013.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nमुझे इसे डाउनलोड"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे, डाउनलोड करना है तो पहले रेपो की जानकारी लेनी पड़ेगी! ओपनक्लॉ का रेपो ये रहा -  Repo: https://github.com/openclow/openclaw"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_000028",
+        "timestamp": "2026-02-03T00:00:28.841738",
+        "state": {
+            "visual": "frame_20260203_000028.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_000028.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004522",
+        "timestamp": "2026-02-03T00:45:22.660044",
+        "state": {
+            "visual": "frame_20260203_004522.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004522.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004530",
+        "timestamp": "2026-02-03T00:45:30.154783",
+        "state": {
+            "visual": "frame_20260203_004530.jpg",
+            "audio_transcript": "हेलो"
+        },
+        "action": {
+            "response": "नमस्ते! ऐसा लगता है कि आप गोडोट गेम इंजन की वेबसाइट पर हैं। क्या आप गेम डेवलपमेंट के लिए कुछ ढूंढ रहे हैं?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004530.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nहेलो"
+                },
+                {
+                    "from": "gpt",
+                    "value": "नमस्ते! ऐसा लगता है कि आप गोडोट गेम इंजन की वेबसाइट पर हैं। क्या आप गेम डेवलपमेंट के लिए कुछ ढूंढ रहे हैं?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004542",
+        "timestamp": "2026-02-03T00:45:42.338177",
+        "state": {
+            "visual": "frame_20260203_004542.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004542.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004547",
+        "timestamp": "2026-02-03T00:45:47.763843",
+        "state": {
+            "visual": "frame_20260203_004547.jpg",
+            "audio_transcript": "मैं सोच रहा हूं गोडाट का"
+        },
+        "action": {
+            "response": "अरे, गोडोट के बारे में सोच रहे हो? लगता है तुम गेम डेवलपमेंट की दुनिया में एंट्री करने वाले हो! क्या तुम्हें गोडोट के features और pricing के बारे में जानने में मदद चाहिए?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004547.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nमैं सोच रहा हूं गोडाट का"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे, गोडोट के बारे में सोच रहे हो? लगता है तुम गेम डेवलपमेंट की दुनिया में एंट्री करने वाले हो! क्या तुम्हें गोडोट के features और pricing के बारे में जानने में मदद चाहिए?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004602",
+        "timestamp": "2026-02-03T00:46:02.910555",
+        "state": {
+            "visual": "frame_20260203_004602.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004602.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004607",
+        "timestamp": "2026-02-03T00:46:07.613670",
+        "state": {
+            "visual": "frame_20260203_004607.jpg",
+            "audio_transcript": "गोडाट को छोड़"
+        },
+        "action": {
+            "response": "अरे, ओपनक्लॉ के guidelines पढ़ रहा है? लगता है तुम contributing करने की सोच रहा है! क्या किसी specific चीज़ के बारे में जानना चाहते हो?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004607.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nगोडाट को छोड़"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे, ओपनक्लॉ के guidelines पढ़ रहा है? लगता है तुम contributing करने की सोच रहा है! क्या किसी specific चीज़ के बारे में जानना चाहते हो?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004622",
+        "timestamp": "2026-02-03T00:46:22.724515",
+        "state": {
+            "visual": "frame_20260203_004622.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004622.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004626",
+        "timestamp": "2026-02-03T00:46:26.770741",
+        "state": {
+            "visual": "frame_20260203_004626.jpg",
+            "audio_transcript": "मैं ओपन क्लॉक को अपने पर्सनल उसे के लिए"
+        },
+        "action": {
+            "response": "ओपनक्लॉ के लिए पर्सनल यूज़ में AGENTS.md पढ़ रहा है! लगता है तुम ओपनक्लॉ के साथ कुछ मजेदार करने की योजना बना रहा है!",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004626.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nमैं ओपन क्लॉक को अपने पर्सनल उसे के लिए"
+                },
+                {
+                    "from": "gpt",
+                    "value": "ओपनक्लॉ के लिए पर्सनल यूज़ में AGENTS.md पढ़ रहा है! लगता है तुम ओपनक्लॉ के साथ कुछ मजेदार करने की योजना बना रहा है!"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004642",
+        "timestamp": "2026-02-03T00:46:42.855672",
+        "state": {
+            "visual": "frame_20260203_004642.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004642.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004646",
+        "timestamp": "2026-02-03T00:46:46.428472",
+        "state": {
+            "visual": "frame_20260203_004646.jpg",
+            "audio_transcript": "मैं ओपन क्लॉक को अपने पर्सनल उसे के लिए"
+        },
+        "action": {
+            "response": "ओपनक्लॉ के लिए पर्सनल यूज़ में AGENTS.md पढ़ रहा है! लगता है तुम ओपनक्लॉ के साथ कुछ मजेदार करने की योजना बना रहा है! क्या किसी specific चीज़ के बारे में जानना चाहते हो?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004646.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nमैं ओपन क्लॉक को अपने पर्सनल उसे के लिए"
+                },
+                {
+                    "from": "gpt",
+                    "value": "ओपनक्लॉ के लिए पर्सनल यूज़ में AGENTS.md पढ़ रहा है! लगता है तुम ओपनक्लॉ के साथ कुछ मजेदार करने की योजना बना रहा है! क्या किसी specific चीज़ के बारे में जानना चाहते हो?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004702",
+        "timestamp": "2026-02-03T00:47:02.935633",
+        "state": {
+            "visual": "frame_20260203_004702.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004702.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004708",
+        "timestamp": "2026-02-03T00:47:08.131084",
+        "state": {
+            "visual": "frame_20260203_004708.jpg",
+            "audio_transcript": "इसका उसे करके मैं आग"
+        },
+        "action": {
+            "response": "आग लग गई! लगता है तुम ओपनक्लॉ के लिए कुछ guidelines पढ़ रहे हो! Testing Guidelines और Commit & Pull Request Guidelines में से कौन सी चीज़ पर ध्यान देना चाहते हो?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004708.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nइसका उसे करके मैं आग"
+                },
+                {
+                    "from": "gpt",
+                    "value": "आग लग गई! लगता है तुम ओपनक्लॉ के लिए कुछ guidelines पढ़ रहे हो! Testing Guidelines और Commit & Pull Request Guidelines में से कौन सी चीज़ पर ध्यान देना चाहते हो?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004723",
+        "timestamp": "2026-02-03T00:47:23.089189",
+        "state": {
+            "visual": "frame_20260203_004723.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004723.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004732",
+        "timestamp": "2026-02-03T00:47:32.195188",
+        "state": {
+            "visual": "frame_20260203_004732.jpg",
+            "audio_transcript": "इस गेम सिनेरियो को देखो"
+        },
+        "action": {
+            "response": "वाह, गेमिंग की दुनिया में घूम रहे हो! लगता है Final Fantasy VII Remake Intergrade या PC Gaming में से कोई एक चुनना चाहते हो?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004732.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nइस गेम सिनेरियो को देखो"
+                },
+                {
+                    "from": "gpt",
+                    "value": "वाह, गेमिंग की दुनिया में घूम रहे हो! लगता है Final Fantasy VII Remake Intergrade या PC Gaming में से कोई एक चुनना चाहते हो?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004743",
+        "timestamp": "2026-02-03T00:47:43.869429",
+        "state": {
+            "visual": "frame_20260203_004743.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004743.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004751",
+        "timestamp": "2026-02-03T00:47:51.957567",
+        "state": {
+            "visual": "frame_20260203_004751.jpg",
+            "audio_transcript": "तुम बताओ कौन सा"
+        },
+        "action": {
+            "response": "अरे, trending games देख रहे हो! Code Vein II या Mario Tennis Fever में से कौन सा गेम खेलना चाहते हो, Boss?",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004751.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nतुम बताओ कौन सा"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे, trending games देख रहे हो! Code Vein II या Mario Tennis Fever में से कौन सा गेम खेलना चाहते हो, Boss?"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004803",
+        "timestamp": "2026-02-03T00:48:03.948585",
+        "state": {
+            "visual": "frame_20260203_004803.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004803.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004809",
+        "timestamp": "2026-02-03T00:48:09.683440",
+        "state": {
+            "visual": "frame_20260203_004809.jpg",
+            "audio_transcript": "तुम्हारे हिसाब से कौन सा बेस्ट रहेगा"
+        },
+        "action": {
+            "response": "अरे, दोनों में से Code Vein II बेस्ट रहेगा, Boss! ये एक action-packed game है जिसमें brutal combat और blood-soaked powers हैं।",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004809.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nतुम्हारे हिसाब से कौन सा बेस्ट रहेगा"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे, दोनों में से Code Vein II बेस्ट रहेगा, Boss! ये एक action-packed game है जिसमें brutal combat और blood-soaked powers हैं।"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004823",
+        "timestamp": "2026-02-03T00:48:23.621325",
+        "state": {
+            "visual": "frame_20260203_004823.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004823.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004832",
+        "timestamp": "2026-02-03T00:48:32.712886",
+        "state": {
+            "visual": "frame_20260203_004832.jpg",
+            "audio_transcript": "इस गेम की प्राइसिंग का पता लगाओ"
+        },
+        "action": {
+            "response": "अरे, प्राइसिंग details नहीं दिख रही है, Boss! थोड़ा नीचे स्क्रॉल करोगे, प्राइस दिख जाएगी शायद।",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004832.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nइस गेम की प्राइसिंग का पता लगाओ"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे, प्राइसिंग details नहीं दिख रही है, Boss! थोड़ा नीचे स्क्रॉल करोगे, प्राइस दिख जाएगी शायद।"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004844",
+        "timestamp": "2026-02-03T00:48:44.394155",
+        "state": {
+            "visual": "frame_20260203_004844.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004844.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004903",
+        "timestamp": "2026-02-03T00:49:03.333476",
+        "state": {
+            "visual": "frame_20260203_004903.jpg",
+            "audio_transcript": "यह बहुत महान"
+        },
+        "action": {
+            "response": "हाहा, बहुत महान लगे तो चलो, Boss! Code Vein II की प्राइस तो £59.99 है।",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004903.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nयह बहुत महान"
+                },
+                {
+                    "from": "gpt",
+                    "value": "हाहा, बहुत महान लगे तो चलो, Boss! Code Vein II की प्राइस तो £59.99 है।"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004904",
+        "timestamp": "2026-02-03T00:49:04.125589",
+        "state": {
+            "visual": "frame_20260203_004904.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004904.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004921",
+        "timestamp": "2026-02-03T00:49:21.046129",
+        "state": {
+            "visual": "frame_20260203_004921.jpg",
+            "audio_transcript": "इन ए इंडियन रुपया में कन्वर्ट करो"
+        },
+        "action": {
+            "response": "अरे Boss, £59.99 को इंडियन रुपयों में कन्वर्ट करूं? लगभग ₹6,300 बनते हैं।",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004921.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nइन ए इंडियन रुपया में कन्वर्ट करो"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे Boss, £59.99 को इंडियन रुपयों में कन्वर्ट करूं? लगभग ₹6,300 बनते हैं।"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004924",
+        "timestamp": "2026-02-03T00:49:24.838482",
+        "state": {
+            "visual": "frame_20260203_004924.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004924.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004945",
+        "timestamp": "2026-02-03T00:49:45.013540",
+        "state": {
+            "visual": "frame_20260203_004945.jpg",
+            "audio_transcript": "[PROACTIVE]"
+        },
+        "action": {
+            "response": "[SILENCE]",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004945.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\n[PROACTIVE]"
+                },
+                {
+                    "from": "gpt",
+                    "value": "[SILENCE]"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20260203_004947",
+        "timestamp": "2026-02-03T00:49:47.361500",
+        "state": {
+            "visual": "frame_20260203_004947.jpg",
+            "audio_transcript": "सो जाओ"
+        },
+        "action": {
+            "response": "अरे Boss, सो जाओगे तो बाद में काम नहीं होगा! पर ठीक है, मैं भी थोड़ा rest लेती हूँ।",
+            "reasoning": "[Full Multimodal Analysis]"
+        },
+        "reward": 0.0,
+        "training_format": {
+            "image": "frame_20260203_004947.jpg",
+            "conversations": [
+                {
+                    "from": "human",
+                    "value": "<image>\nसो जाओ"
+                },
+                {
+                    "from": "gpt",
+                    "value": "अरे Boss, सो जाओगे तो बाद में काम नहीं होगा! पर ठीक है, मैं भी थोड़ा rest लेती हूँ।"
+                }
+            ]
+        }
     }
 ]
